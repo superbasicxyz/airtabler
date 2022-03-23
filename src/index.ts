@@ -1,3 +1,3 @@
-export function multiply(a:number, b:number) {
-  return a * b;
+export function model(baseName: string) {
+  return baseName;
 }

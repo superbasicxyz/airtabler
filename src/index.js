@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.multiply = void 0;
-function multiply(a, b) {
-    return a * b;
+exports.model = void 0;
+function model(baseName) {
+    return baseName;
 }
-exports.multiply = multiply;
+exports.model = model;
