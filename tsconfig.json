@@ -3,9 +3,9 @@
     "target": "es2016",
     "module": "commonjs",
     "rootDir": "./src",
+    "outDir": "./dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -21,6 +21,7 @@
   },
   "exclude": [
     "./node_modules",
-    "./dist"
+    "./dist",
+    "./test"
   ]
 }
