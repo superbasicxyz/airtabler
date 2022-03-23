@@ -1,29 +1,11 @@
-function genBaseUrl(baseId: string) {
-  return () => `https://api.airtable.com/v0/${baseId}`;
-}
-
-function genModel(baseUrl: string) {
-  function all(baseName: string) {
-    console.log(baseUrl);
-    console.log(baseName);
-    return () => { return [] };
-  }
-
-  return (baseName: string) => {
-    return {
-      baseName: () => baseName,
-      all: all(baseName)
-    }
-  };
-}
+import { baseUrl } from './baseUrl';
+import { model } from './model';
 
 const airtabler = {
   init: (baseId: string) => {
-    const baseUrl: Function = genBaseUrl(baseId);
-    const model: Function = genModel(baseUrl());
     return {
-      baseUrl,
-      model
+      baseUrl: () => baseUrl(baseId),
+      model: model(baseUrl(baseId))
     };
   }
 };
