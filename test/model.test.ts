@@ -1,28 +1,34 @@
-import airtabler from "../src/index"; 
+import airtabler from "../src/index";
 
-const { model } = airtabler.init(process.env.DEV_AIRTABLE_BASE_ID!);
+const { model, baseUrl } = airtabler.init(process.env.DEV_AIRTABLE_BASE_ID!);
 
-describe('#all', () => {
-  it('returns a function', () => {
-
-  });
+describe("all()", () => {
+  it("returns a function", () => {});
 });
 
-describe('#find', () => {
-  it('returns a function', () => {
-
-  });
+describe("find()", () => {
+  it("returns a function", () => {});
 });
 
-describe("model", () => {
-  it("#baseName", () => {
-    const events = model("Events");
-    expect(events.tableName()).toBe("Events");
+describe("model()", () => {
+  describe(".tableName()", () => {
+    it("returns the table name", () => {
+      const events = model("Events");
+      expect(events.tableName()).toBe("Events");
+    });
   });
 
-  it("#all returns array", () => {
+  describe(".tableUrl()", () => {
+    it("returns the table URL", () => {
+      const events = model("Events");
+      expect(events.tableUrl()).toBe(`${baseUrl()}/Events`);
+    });
+  });
+
+  describe(".all()", () => {
     const events = model("Events");
     expect(events.all()).toStrictEqual([]);
   });
-});
 
+  describe(".find()", () => {});
+});

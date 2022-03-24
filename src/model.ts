@@ -12,8 +12,15 @@ function find(tableUrl: string): Function {
   };
 }
 
-export function model(baseUrl: string) {
-  return (tableName: string) => {
+interface Model {
+  tableName: Function;
+  tableUrl: Function;
+  all: Function;
+  find: Function;
+};
+
+export function model(baseUrl: string): Function {
+  return (tableName: string): Model => {
     const tableUrl = `${baseUrl}/${tableName}`;
 
     return {
