@@ -1,7 +1,24 @@
+import axios from "axios";
+
+type AirtableRecordFields = {
+  [key: string]: string | string[];
+};
+
+interface AirtableRecord {
+  id: string;
+  createdTime: string;
+  fields: AirtableRecordFields;
+}
+
 function all(tableUrl: string): Function {
   console.log(tableUrl);
-  return (): Array<string> => {
-    return [];
+
+  return async (): Promise<AirtableRecord[]> => {
+    const response = await axios.get(`${tableUrl}`);
+    const {
+      data: { records }
+    } = response;
+    return records;
   };
 }
 
@@ -17,7 +34,7 @@ interface Model {
   tableUrl: Function;
   all: Function;
   find: Function;
-};
+}
 
 export function model(baseUrl: string): Function {
   return (tableName: string): Model => {

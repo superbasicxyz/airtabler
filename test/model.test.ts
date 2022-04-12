@@ -25,9 +25,9 @@ describe("model()", () => {
     });
   });
 
-  describe(".all()", () => {
+  test(".all()", async () => {
     const events = model("Events");
-    expect(events.all()).toStrictEqual([
+    await expect(events.all()).resolves.toStrictEqual([
       {
         id: "rec9HHwhi5F8Fy997",
         createdTime: "2022-01-03T21:12:51.000Z",
