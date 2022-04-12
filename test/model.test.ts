@@ -27,7 +27,17 @@ describe("model()", () => {
 
   describe(".all()", () => {
     const events = model("Events");
-    expect(events.all()).toStrictEqual([]);
+    expect(events.all()).toStrictEqual([
+      {
+        id: "rec9HHwhi5F8Fy997",
+        createdTime: "2022-01-03T21:12:51.000Z",
+        fields: {
+          notes: "this is a note",
+          email: "test@airtable.com",
+          events: ["rec4hh123543jJkkl"]
+        }
+      }
+    ]);
   });
 
   describe(".find()", () => {});
