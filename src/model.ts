@@ -4,28 +4,44 @@ type AirtableRecordFields = {
   [key: string]: string | string[];
 };
 
-interface AirtableRecord {
+type AirtableErrorError = {
+  type: string;
+  message: string;
+}
+
+type AirtableError = {
+  error: string | AirtableErrorError;
+};
+
+type AirtableRecord = {
   id: string;
   createdTime: string;
   fields: AirtableRecordFields;
 }
 
 function all(tableUrl: string): Function {
-  console.log(tableUrl);
-
-  return async (): Promise<AirtableRecord[]> => {
-    const response = await axios.get(`${tableUrl}`);
-    const {
-      data: { records }
-    } = response;
-    return records;
+  return async (): Promise<AirtableRecord[] | AirtableError> => {
+    try {
+      const response = await axios.get(`${tableUrl}`);
+      const {
+        data: { records }
+      } = response;
+      return records;
+    } catch (error: any) {
+      return error.response.data;
+    }
   };
 }
 
 function find(tableUrl: string): Function {
-  console.log(tableUrl);
-  return (recordId: string) => {
-    return { id: recordId };
+  return async (recordId: string): Promise<AirtableRecord | AirtableError> => {
+    try {
+      const response = await axios.get(`${tableUrl}/${recordId}`);
+      const { data: record } = response;
+      return record;
+    } catch (error: any) {
+      return error.response.data;
+    }
   };
 }
 
