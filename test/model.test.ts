@@ -1,6 +1,11 @@
 import airtabler from "../src/index";
 
-const { model, baseUrl } = airtabler.init(process.env.DEV_AIRTABLE_BASE_ID!);
+const config = {
+  baseId: process.env.DEV_AIRTABLE_BASE_ID!,
+  apiKey: process.env.DEV_AIRTABLE_API_KEY!
+}
+
+const { model, baseUrl } = airtabler.init(config);
 
 describe("all()", () => {
   it("returns a function", () => {});
