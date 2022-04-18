@@ -17,3 +17,17 @@ We use `jest` and `ts-jest`
 ```
 npm test # or npm t
 ```
+
+## Generate docs
+
+Install `typedoc`
+
+```sh
+npm i -g typedoc
+```
+
+And generate docs
+
+```sh
+npx typedoc --out docs src
+```
