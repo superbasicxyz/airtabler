@@ -1,10 +1,7 @@
 import { baseUrl } from './baseUrl';
 import { model } from './model';
 
-interface AirtablerConfig {
-  baseId: string;
-  apiKey: string;
-}
+import { AirtablerConfig } from './index.d';
 
 const airtabler = {
   init: ({ baseId }: AirtablerConfig) => {
