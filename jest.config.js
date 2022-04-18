@@ -3,7 +3,7 @@ module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
   setupFiles: ["dotenv/config"],
-  setupFilesAfterEnv: ["./jest.setup.ts"],
+  setupFilesAfterEnv: ["./src/jest.setup.ts"],
   watchPlugins: [
     "jest-watch-typeahead/filename",
     "jest-watch-typeahead/testname"
