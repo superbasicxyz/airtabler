@@ -6,7 +6,7 @@ Wrapper for Airtable API written in Typescript. Meant to simplify the implementa
 
 Install dependencies
 
-```
+```sh
 npm install
 ```
 
@@ -14,8 +14,16 @@ npm install
 
 We use `jest` and `ts-jest`
 
-```
+To run your tests:
+
+```sh
 npm test # or npm t
+```
+
+Or to run with watching:
+
+```sh
+npm test -- --watch
 ```
 
 ## Generate docs
@@ -31,3 +39,4 @@ And generate docs
 ```sh
 npx typedoc --out docs src
 ```
+
