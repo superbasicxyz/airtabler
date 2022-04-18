@@ -1,4 +1,4 @@
-import { server } from "./src/mocks/server.js";
+import { server } from "./mocks/server";
 
 beforeAll(() => server.listen());
 

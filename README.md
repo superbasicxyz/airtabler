@@ -22,8 +22,21 @@ npm test # or npm t
 
 Or to run with watching:
 
-
 ```sh
 npm test -- --watch
+```
+
+## Generate docs
+
+Install `typedoc`
+
+```sh
+npm i -g typedoc
+```
+
+And generate docs
+
+```sh
+npx typedoc --out docs src
 ```
 
