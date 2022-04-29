@@ -1,13 +1,11 @@
-import { baseUrl } from './baseUrl';
 import { model } from './model';
 
-import { AirtablerConfig } from './index.d';
+import { AirtablerConfig } from './types.d';
 
 const airtabler = {
-  init: ({ baseId }: AirtablerConfig) => {
+  init: (config: AirtablerConfig) => {
     return {
-      baseUrl: () => baseUrl(baseId),
-      model: model(baseUrl(baseId))
+      model: model(config)
     };
   }
 };

@@ -1,28 +1,17 @@
-import axios from "axios";
+import { baseUrl } from "./baseUrl";
+import { airtablerRequest } from "./airtablerRequest";
 
-type AirtableRecordFields = {
-  [key: string]: string | string[];
-};
+import {
+  AirtablerConfig,
+  AirtableError,
+  AirtableRecord,
+  Model
+} from "./types.d";
 
-type AirtableErrorError = {
-  type: string;
-  message: string;
-}
-
-type AirtableError = {
-  error: string | AirtableErrorError;
-};
-
-type AirtableRecord = {
-  id: string;
-  createdTime: string;
-  fields: AirtableRecordFields;
-}
-
-function all(tableUrl: string): Function {
+function all(tableUrl: string, config: AirtablerConfig): Function {
   return async (): Promise<AirtableRecord[] | AirtableError> => {
     try {
-      const response = await axios.get(`${tableUrl}`);
+      const response = await airtablerRequest(tableUrl, config);
       const {
         data: { records }
       } = response;
@@ -33,10 +22,10 @@ function all(tableUrl: string): Function {
   };
 }
 
-function find(tableUrl: string): Function {
+function find(tableUrl: string, config: AirtablerConfig): Function {
   return async (recordId: string): Promise<AirtableRecord | AirtableError> => {
     try {
-      const response = await axios.get(`${tableUrl}/${recordId}`);
+      const response = await airtablerRequest(`${tableUrl}/${recordId}`, config);
       const { data: record } = response;
       return record;
     } catch (error: any) {
@@ -45,22 +34,15 @@ function find(tableUrl: string): Function {
   };
 }
 
-interface Model {
-  tableName: Function;
-  tableUrl: Function;
-  all: Function;
-  find: Function;
-}
-
-export function model(baseUrl: string): Function {
+export function model(config: AirtablerConfig): Function {
   return (tableName: string): Model => {
-    const tableUrl = `${baseUrl}/${tableName}`;
+    const tableUrl = `${baseUrl(config.baseId)}/${tableName}`;
 
     return {
       tableName: () => tableName,
       tableUrl: () => tableUrl,
-      all: all(tableUrl),
-      find: find(tableUrl)
+      all: all(tableUrl, config),
+      find: find(tableUrl, config)
     };
   };
 }

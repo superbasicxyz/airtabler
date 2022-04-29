@@ -1,11 +1,13 @@
 import airtabler from "../src/index";
 
+import { baseUrl } from "../src/baseUrl";
+
 const config = {
   baseId: process.env.DEV_AIRTABLE_BASE_ID!,
   apiKey: process.env.DEV_AIRTABLE_API_KEY!
-}
+};
 
-const { model, baseUrl } = airtabler.init(config);
+const { model } = airtabler.init(config);
 
 describe("all()", () => {
   it("returns a function", () => {});
@@ -26,7 +28,7 @@ describe("model()", () => {
   describe(".tableUrl()", () => {
     it("returns the table URL", () => {
       const events = model("Events");
-      expect(events.tableUrl()).toBe(`${baseUrl()}/Events`);
+      expect(events.tableUrl()).toBe(`${baseUrl(config.baseId)}/Events`);
     });
   });
 
