@@ -11,6 +11,6 @@ const config: AirtablerConfig = {
 describe("airtablerRequest", () => {
   test("returns a preconfigured axios request", async () => {
     const request = await airtablerRequest(`${baseUrl(config.baseId)}/Events`, config);
-    expect(request.config.headers!.Authorization).toBe(config.apiKey);
+    expect(request.config.headers!.Authorization).toBe(`Bearer ${config.apiKey}`);
   });
 });
