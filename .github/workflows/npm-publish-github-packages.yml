@@ -17,6 +17,9 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm test
+        env:
+          DEV_AIRTABLE_API_KEY: ${{secrets.DEV_AIRTABLE_API_KEY}}
+          DEV_AIRTABLE_BASE_ID: ${{secrets.DEV_AIRTABLE_BASE_ID}}
 
   publish-gpr:
     needs: build
