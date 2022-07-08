@@ -2,7 +2,7 @@
   "name": "@superbasicxyz/airtabler",
   "version": "0.0.1",
   "description": "open source airtable api client'",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "test": "jest",
