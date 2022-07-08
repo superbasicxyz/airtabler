@@ -19,7 +19,7 @@ const unauthorizedResponse = {
     }
 };
 const isAuthorized = (req) => {
-    return req.headers.get("Authorization") == process.env.DEV_AIRTABLE_API_KEY;
+    return req.headers.get("Authorization") == `Bearer ${process.env.DEV_AIRTABLE_API_KEY}`;
 };
 exports.handlers = [
     msw_1.rest.get(`${BASE_URL}/Events`, (req, res, ctx) => {

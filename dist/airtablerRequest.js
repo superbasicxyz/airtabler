@@ -8,7 +8,7 @@ const axios_1 = __importDefault(require("axios"));
 function airtablerRequest(url, { apiKey }) {
     return axios_1.default.get(url, {
         headers: {
-            Authorization: apiKey
+            Authorization: `Bearer ${apiKey}`
         }
     });
 }
