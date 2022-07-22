@@ -1,5 +1,7 @@
 import { rest, RestRequest } from "msw";
 
+const responses = require("./responses.json");
+
 const BASE_URL = `https://api.airtable.com/v0/${process.env.DEV_AIRTABLE_BASE_ID}`;
 
 const EVENT = {
@@ -20,7 +22,10 @@ const unauthorizedResponse = {
 };
 
 const isAuthorized = (req: RestRequest): boolean => {
-  return req.headers.get("Authorization") == `Bearer ${process.env.DEV_AIRTABLE_API_KEY}`;
+  return (
+    req.headers.get("Authorization") ==
+    `Bearer ${process.env.DEV_AIRTABLE_API_KEY}`
+  );
 };
 
 export const handlers = [
@@ -29,11 +34,21 @@ export const handlers = [
       return res(ctx.status(401), ctx.json(unauthorizedResponse));
     }
 
+    if (req.url.searchParams.get('offset')) {
+      console.log('OFFSET');
+      return res(
+        ctx.status(200),
+        ctx.json({
+          records: responses.events.index[1].records,
+        })
+      );
+    }
+
     return res(
       ctx.status(200),
       ctx.json({
-        records: [EVENT],
-        offset: "itr4123jkflsf/recUhjklsdfukjs"
+        records: responses.events.index[0].records,
+        offset: responses.events.index[0].offset
       })
     );
   }),
