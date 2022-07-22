@@ -13,10 +13,23 @@ exports.model = void 0;
 const baseUrl_1 = require("./baseUrl");
 const airtablerRequest_1 = require("./airtablerRequest");
 function all(tableUrl, config) {
+    function getRecords(url, config, offsetParam) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const collection = [];
+            const requestUrl = offsetParam ? `${url}?offset=${offsetParam}` : url;
+            const response = yield (0, airtablerRequest_1.airtablerRequest)(requestUrl, config);
+            const { data: { records, offset } } = response;
+            records.map((record) => collection.push(record));
+            if (offset) {
+                const nextRecords = yield getRecords(`${url}`, config, offset);
+                nextRecords.map(record => collection.push(record));
+            }
+            return collection;
+        });
+    }
     return () => __awaiter(this, void 0, void 0, function* () {
         try {
-            const response = yield (0, airtablerRequest_1.airtablerRequest)(tableUrl, config);
-            const { data: { records } } = response;
+            const records = yield getRecords(tableUrl, config);
             return records;
         }
         catch (error) {
