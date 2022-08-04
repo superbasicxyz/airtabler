@@ -1,4 +1,4 @@
-import airtabler from "../src/index"; 
+import { airtabler } from "../src/index"; 
 
 const config = {
   baseId: process.env.DEV_AIRTABLE_BASE_ID!,

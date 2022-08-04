@@ -1,4 +1,4 @@
-import airtabler from "../src/index";
+import { airtabler } from "../src/index";
 
 import { baseUrl } from "../src/baseUrl";
 
