@@ -32,9 +32,11 @@ const db = airtabler.init(config);
 
 ### `.model(tableName)`
 
+Instantiate a connection to a particular table in your Airtable base.
+
 Parameters: `tableName`: `string`
 
-Returns `Function`
+Returns `Model` object
 
 ```js
 const events = db.model('Events');
@@ -42,15 +44,19 @@ const events = db.model('Events');
 
 ### `.all()`
 
+Retrieve all `Event` records from your Airtable base.
+
 Parameters: none
 
 Returns `AirtableRecord[]`
 
 ```js
-await events.all();
+const allEvents = await events.all();
 ```
 
 ### `.find(recordId)`
+
+Retrieve a single `Event` from your Airtable base.
 
 Parameters: `recordId`: `string`
 
@@ -59,3 +65,7 @@ Returns `AirtableRecord`
 ```js
 const event = await events.find('recXXXXXXXXXXXXXX');
 ```
+
+## Contributing
+
+Refer to our [contribution guidelines](https://github.com/superbasicxyz/airtabler/blob/main/CONTRIBUTING.md) and [Code of Conduct for contributors](https://github.com/superbasicxyz/airtabler/blob/main/CODE_OF_CONDUCT.md).
