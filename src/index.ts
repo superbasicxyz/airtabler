@@ -1,6 +1,6 @@
-import { model } from './model';
+import { model } from "./model";
 
-import { AirtablerConfig } from './types.d';
+import { AirtablerConfig } from "./types.d";
 
 const airtabler = {
   init: (config: AirtablerConfig) => {
@@ -10,4 +10,4 @@ const airtabler = {
   }
 };
 
-export default airtabler;
+export { airtabler };

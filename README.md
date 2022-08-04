@@ -1,42 +1,61 @@
-# AIRTABLER
+# Airtabler
 
 Wrapper for Airtable API written in Typescript. Meant to simplify the implementation of common patterns when using Airtable as a backend for an application.
 
-## Dev setup
+## Getting started
 
-Install dependencies
+### Installation
 
-```sh
-npm install
+```bash
+npm install @superbasic/airtabler
+
+# OR
+
+yarn add @superbasic/airtabler
 ```
 
-## Run tests
+## Initialize
 
-We use `jest` and `ts-jest`
+```js
 
-To run your tests:
+import { airtabler } from "@superbasicxyz/airtabler";
 
-```sh
-npm test # or npm t
+const config = {
+  apiKey: "[YOUR-AIRTABLE-API-KEY]",
+  baseId: "[YOUR-AIRTABLE-BASE-ID]"
+}
+
+const db = airtabler.init(config);
 ```
 
-Or to run with watching:
+## Query Data
 
-```sh
-npm test -- --watch
+### `.model(tableName)`
+
+Parameters: `tableName`: `string`
+
+Returns `Function`
+
+```js
+const events = db.model('Events');
 ```
 
-## Generate docs
+### `.all()`
 
-Install `typedoc`
+Parameters: none
 
-```sh
-npm i -g typedoc
+Returns `AirtableRecord[]`
+
+```js
+await events.all();
 ```
 
-And generate docs
+### `.find(recordId)`
 
-```sh
-npx typedoc --out docs src
+Parameters: `recordId`: `string`
+
+Returns `AirtableRecord`
+
+```js
+const event = await events.find('recXXXXXXXXXXXXXX');
 ```
-
