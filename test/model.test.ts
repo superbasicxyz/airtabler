@@ -30,7 +30,7 @@ describe("model()", () => {
   describe(".tableUrl()", () => {
     it("returns the table URL", () => {
       const events = model("Events");
-      expect(events.tableUrl()).toBe(`${baseUrl(config.baseId)}/Events`);
+      expect(`${events.tableUrl()}`).toBe(`${baseUrl(config.baseId)}/Events`);
     });
   });
 

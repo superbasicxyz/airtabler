@@ -35,7 +35,6 @@ export const handlers = [
     }
 
     if (req.url.searchParams.get('offset')) {
-      console.log('OFFSET');
       return res(
         ctx.status(200),
         ctx.json({

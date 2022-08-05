@@ -8,8 +8,8 @@ import {
   Model
 } from "./types.d";
 
-function all(tableUrl: string, config: AirtablerConfig): Function {
-  async function getRecords(url: string, config: AirtablerConfig, offsetParam?: string): Promise<AirtableRecord[]> {
+function all(tableUrl: URL, config: AirtablerConfig): Function {
+  async function getRecords(url: URL, config: AirtablerConfig, offsetParam?: string): Promise<AirtableRecord[]> {
     const collection: AirtableRecord[] = [];
 
     const requestUrl = new URL(url);
@@ -29,7 +29,7 @@ function all(tableUrl: string, config: AirtablerConfig): Function {
     records.map((record: AirtableRecord) => collection.push(record));
 
     if (offset) {
-      const nextRecords = await getRecords(`${url}`, config, offset);
+      const nextRecords = await getRecords(url, config, offset);
       nextRecords.map(record => collection.push(record));
     }
 
@@ -46,7 +46,7 @@ function all(tableUrl: string, config: AirtablerConfig): Function {
   };
 }
 
-function find(tableUrl: string, config: AirtablerConfig): Function {
+function find(tableUrl: URL, config: AirtablerConfig): Function {
   return async (recordId: string): Promise<AirtableRecord | AirtableError> => {
     try {
       const response = await airtablerRequest(
@@ -63,7 +63,7 @@ function find(tableUrl: string, config: AirtablerConfig): Function {
 
 export function model(config: AirtablerConfig): Function {
   return (tableName: string): Model => {
-    const tableUrl = `${baseUrl(config.baseId)}/${tableName}`;
+    const tableUrl = new URL(`${baseUrl(config.baseId)}/${tableName}`);
 
     return {
       tableName: () => tableName,

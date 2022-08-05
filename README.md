@@ -35,7 +35,7 @@ const db = airtabler.init(config);
 
 Instantiate a connection to a particular table in your Airtable base.
 
-Parameters: `tableName`: `string`
+Parameters: `tableName`: `string` *Required*
 
 Returns `Model` object
 
@@ -81,7 +81,7 @@ const allEvents = await events.all();
 
 Retrieve a single `Event` from your Airtable base.
 
-Parameters: `recordId`: `string`
+Parameters: `recordId`: `string` *Required*
 
 Returns `AirtableRecord`
 
