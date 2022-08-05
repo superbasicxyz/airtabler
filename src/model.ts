@@ -12,9 +12,15 @@ function all(tableUrl: string, config: AirtablerConfig): Function {
   async function getRecords(url: string, config: AirtablerConfig, offsetParam?: string): Promise<AirtableRecord[]> {
     const collection: AirtableRecord[] = [];
 
-    const requestUrl = offsetParam ? `${url}?offset=${offsetParam}` : url;
+    const requestUrl = new URL(url);
 
-    const response = await airtablerRequest(requestUrl, config);
+    if (offsetParam) {
+      requestUrl.searchParams.append("offset", offsetParam);
+    }
+
+    requestUrl.searchParams.append("maxRecords", "1000");
+
+    const response = await airtablerRequest(requestUrl.href, config);
 
     const {
       data: { records, offset }

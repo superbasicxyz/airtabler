@@ -16,8 +16,12 @@ function all(tableUrl, config) {
     function getRecords(url, config, offsetParam) {
         return __awaiter(this, void 0, void 0, function* () {
             const collection = [];
-            const requestUrl = offsetParam ? `${url}?offset=${offsetParam}` : url;
-            const response = yield (0, airtablerRequest_1.airtablerRequest)(requestUrl, config);
+            const requestUrl = new URL(url);
+            if (offsetParam) {
+                requestUrl.searchParams.append("offset", offsetParam);
+            }
+            requestUrl.searchParams.append("maxRecords", "1000");
+            const response = yield (0, airtablerRequest_1.airtablerRequest)(requestUrl.href, config);
             const { data: { records, offset } } = response;
             records.map((record) => collection.push(record));
             if (offset) {
