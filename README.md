@@ -59,17 +59,17 @@ const allEvents = await events.all();
   {
     id: 'recXXXXXXXXXXXXX',
     createdTime: '2022-07-19T22:41:33.000Z',
-    fields: { name: 'Birthday Party', id: 'recAXS51sA0oAlc13' }
+    fields: { name: 'Birthday Party', id: 'recXXXXXXXXXXXXXX' }
   },
   {
     id: 'recXXXXXXXXXXXXX',
     createdTime: '2022-07-19T22:41:33.000Z',
-    fields: { name: 'Graduation Party', id: 'recAXS51sA0oAlc13' }
+    fields: { name: 'Graduation Party', id: 'recXXXXXXXXXXXXXXX' }
   },
   {
     id: 'recXXXXXXXXXXXXX',
     createdTime: '2022-07-19T22:41:33.000Z',
-    fields: { name: 'Wedding Reception', id: 'recAXS51sA0oAlc13' }
+    fields: { name: 'Wedding Reception', id: 'recXXXXXXXXXXXXXX' }
   }
 ]
 */
@@ -88,9 +88,9 @@ const event = await events.find('recXXXXXXXXXXXXXX');
 
 /*
 {
-  id: 'rec0DvbU00rjSVu1V',
+  id: 'recXXXXXXXXXXXXx',
   createdTime: '2022-07-19T22:41:38.000Z',
-  fields: { name: 'Birthday Party', id: 'rec0DvbU00rjSVu1V' }
+  fields: { name: 'Birthday Party', id: 'recXXXXXXXXXXXX' }
 }
 */
 
@@ -117,7 +117,7 @@ Returns `string`
 ```js
 const tableUrl = events.tableUrl()
 
-// https://api.airtable.com/v0/appXXXXXXXXXX/Events
+// "https://api.airtable.com/v0/appXXXXXXXXXX/Events"
 ```
 
 ## Contributing
