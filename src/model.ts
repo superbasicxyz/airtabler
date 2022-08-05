@@ -9,7 +9,11 @@ import {
 } from "./types.d";
 
 function all(tableUrl: URL, config: AirtablerConfig): Function {
-  async function getRecords(url: URL, config: AirtablerConfig, offsetParam?: string): Promise<AirtableRecord[]> {
+  async function getRecords(
+    url: URL,
+    config: AirtablerConfig,
+    offsetParam?: string
+  ): Promise<AirtableRecord[]> {
     const collection: AirtableRecord[] = [];
 
     const requestUrl = new URL(url);

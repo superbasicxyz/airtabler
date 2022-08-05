@@ -10,7 +10,7 @@ export type AirtableRecordFields = {
 export type AirtableErrorError = {
   type: string;
   message: string;
-}
+};
 
 export type AirtableError = {
   error: string | AirtableErrorError;
@@ -20,7 +20,7 @@ export type AirtableRecord = {
   id: string;
   createdTime: string;
   fields: AirtableRecordFields;
-}
+};
 
 export interface Model {
   tableName: Function;
