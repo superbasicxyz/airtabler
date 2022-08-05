@@ -38,8 +38,12 @@ describe("model()", () => {
     test(".all()", async () => {
       const events = await model("Events").all();
 
-      expect(events.length).toStrictEqual(responses.events.index.flatMap((page: any) => page.records).length);
-      expect(events).toStrictEqual(responses.events.index.flatMap((page: any) => page.records));
+      expect(events.length).toStrictEqual(
+        responses.events.index.flatMap((page: any) => page.records).length
+      );
+      expect(events).toStrictEqual(
+        responses.events.index.flatMap((page: any) => page.records)
+      );
     });
     test(".all() on bad table name", async () => {
       const events = model("Event");
@@ -72,6 +76,25 @@ describe("model()", () => {
       await expect(events.find("rec9HHwhi5F8Fy9")).resolves.toStrictEqual({
         error: "NOT_FOUND"
       });
+    });
+  });
+
+  describe(".where", () => {
+    test('.where({ id: "id"}) returns an array with one record', async () => {
+      const events = model("Events");
+      await expect(
+        events.where({ id: "rec9HHwhi5F8Fy997" })
+      ).resolves.toStrictEqual([
+        {
+          id: "rec9HHwhi5F8Fy997",
+          createdTime: "2022-01-03T21:12:51.000Z",
+          fields: {
+            notes: "this is a note",
+            email: "test@airtable.com",
+            events: ["rec4hh123543jJkkl"]
+          }
+        }
+      ]);
     });
   });
 });

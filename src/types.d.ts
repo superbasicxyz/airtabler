@@ -22,9 +22,18 @@ export type AirtableRecord = {
   fields: AirtableRecordFields;
 };
 
+export type AirtableListRequestParams = {
+  fields?: string[];
+  filterByFormula?: string;
+  maxRecords?: number;
+  pageSize?: number;
+  offset?: string;
+}
+
 export interface Model {
   tableName: Function;
   tableUrl: Function;
   all: Function;
   find: Function;
+  where: Function;
 }
