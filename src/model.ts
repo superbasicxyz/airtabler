@@ -7,7 +7,7 @@ import {
   AirtableRecord,
   AirtableListRequestParams,
   Model
-} from "./types.d";
+} from "../types.d";
 
 async function getRecords(
   url: URL,
