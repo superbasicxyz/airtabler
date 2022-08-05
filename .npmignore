@@ -1,0 +1,9 @@
+jest.config.js
+tsconfig.json
+.env
+.env.example
+test/
+src/
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+.github
