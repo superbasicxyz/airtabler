@@ -29,7 +29,7 @@ const config = {
 const db = airtabler.init(config);
 ```
 
-## Query Data
+## Instantiate a `Model` object
 
 ### `.model(tableName)`
 
@@ -42,6 +42,8 @@ Returns `Model` object
 ```js
 const events = db.model('Events');
 ```
+
+## Query data using the `Model` object
 
 ### `.all()`
 
@@ -88,7 +90,7 @@ const event = await events.find('recXXXXXXXXXXXXXX');
 
 /*
 {
-  id: 'recXXXXXXXXXXXXx',
+  id: 'recXXXXXXXXXXXXX',
   createdTime: '2022-07-19T22:41:38.000Z',
   fields: { name: 'Birthday Party', id: 'recXXXXXXXXXXXX' }
 }
