@@ -8,11 +8,11 @@ Airtable API client written in Typescript. Airtabler's aim is to simplify the im
 ### Installation
 
 ```bash
-npm install @superbasic/airtabler
+npm install @superbasicxyz/airtabler
 
 # OR
 
-yarn add @superbasic/airtabler
+yarn add @superbasicxyz/airtabler
 ```
 
 ## Initialize
