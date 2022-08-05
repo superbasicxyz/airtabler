@@ -25,7 +25,7 @@ function all(tableUrl, config) {
             const { data: { records, offset } } = response;
             records.map((record) => collection.push(record));
             if (offset) {
-                const nextRecords = yield getRecords(`${url}`, config, offset);
+                const nextRecords = yield getRecords(url, config, offset);
                 nextRecords.map(record => collection.push(record));
             }
             return collection;
@@ -55,7 +55,7 @@ function find(tableUrl, config) {
 }
 function model(config) {
     return (tableName) => {
-        const tableUrl = `${(0, baseUrl_1.baseUrl)(config.baseId)}/${tableName}`;
+        const tableUrl = new URL(`${(0, baseUrl_1.baseUrl)(config.baseId)}/${tableName}`);
         return {
             tableName: () => tableName,
             tableUrl: () => tableUrl,
