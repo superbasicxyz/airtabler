@@ -1,6 +1,7 @@
 # Airtabler
 
-Wrapper for Airtable API written in Typescript. Meant to simplify the implementation of common patterns when using Airtable as a backend for an application.
+Airtable API client written in Typescript. Airtabler's aim is to simplify the implementation of common patterns when using Airtable as a backend for an application.
+
 
 ## Getting started
 
