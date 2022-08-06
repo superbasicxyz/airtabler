@@ -25,8 +25,6 @@ export async function getRecords(
 
   requestUrl.searchParams.append("maxRecords", "1000");
 
-  console.log(requestUrl);
-
   const response = await airtablerRequest(requestUrl.href, config);
 
   const {

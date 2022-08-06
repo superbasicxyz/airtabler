@@ -83,18 +83,15 @@ describe("model()", () => {
     test('.where({ id: "id"}) returns an array with one record', async () => {
       const events = model("Events");
       await expect(
-        events.where({ id: "rec9HHwhi5F8Fy997" })
-      ).resolves.toStrictEqual([
-        {
-          id: "rec9HHwhi5F8Fy997",
-          createdTime: "2022-01-03T21:12:51.000Z",
-          fields: {
-            notes: "this is a note",
-            email: "test@airtable.com",
-            events: ["rec4hh123543jJkkl"]
-          }
-        }
-      ]);
+        events.where({ id: "recEeoflM87HKIsOf" })
+      ).resolves.toStrictEqual(responses.events.whereIdSingle[0].records);
+    });
+
+    test('.where({ id: ["id", "id"]}) returns an array with one record', async () => {
+      const events = model("Events");
+      await expect(
+        events.where({ id: ["recEeoflM87HKIsOf", "rec0yEne3iWggETaA"] })
+      ).resolves.toStrictEqual(responses.events.whereIdSingle[0].records);
     });
   });
 });
