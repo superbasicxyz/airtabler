@@ -34,11 +34,35 @@ export const handlers = [
       return res(ctx.status(401), ctx.json(unauthorizedResponse));
     }
 
-    if (req.url.searchParams.get('offset')) {
+    if (
+      req.url.searchParams.get("filterByFormula") ==
+      'SEARCH(RECORD_ID(), "recEeoflM87HKIsOf")'
+    ) {
+      return res(
+        ctx.json({ records: responses.events.whereIdSingle[0].records })
+      );
+    }
+
+    if (
+      req.url.searchParams.get("filterByFormula") ==
+      'SEARCH(RECORD_ID(), "recEeoflM87HKIsOf,rec0yEne3iWggETaA")'
+    ) {
+      return res(
+        ctx.json({ records: responses.events.whereIdSingle[0].records })
+      );
+    }
+
+    if (req.url.searchParams.get("filterByFormula") == 'SEARCH("Retirement", {Name})') {
+      return res(
+        ctx.json({ records: responses.events.whereName[0].records })
+      );
+    }
+
+    if (req.url.searchParams.get("offset")) {
       return res(
         ctx.status(200),
         ctx.json({
-          records: responses.events.index[1].records,
+          records: responses.events.index[1].records
         })
       );
     }

@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { AirtablerConfig } from "./types.d";
+import { AirtablerConfig } from "../types.d";
 
 export function airtablerRequest(
   url: string,

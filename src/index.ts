@@ -1,6 +1,6 @@
 import { model } from "./model";
 
-import { AirtablerConfig } from "./types.d";
+import { AirtablerConfig } from "../types.d";
 
 const airtabler = {
   init: (config: AirtablerConfig) => {

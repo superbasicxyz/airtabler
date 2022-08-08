@@ -2,7 +2,6 @@
 
 Airtable API client written in Typescript. Airtabler's aim is to simplify the implementation of common patterns when using Airtable as a backend for an application.
 
-
 ## Getting started
 
 ### Installation
@@ -18,13 +17,12 @@ yarn add @superbasicxyz/airtabler
 ## Initialize
 
 ```js
-
 import { airtabler } from "@superbasicxyz/airtabler";
 
 const config = {
   apiKey: "[YOUR-AIRTABLE-API-KEY]",
   baseId: "[YOUR-AIRTABLE-BASE-ID]"
-}
+};
 
 const db = airtabler.init(config);
 ```
@@ -35,12 +33,12 @@ const db = airtabler.init(config);
 
 Instantiate a connection to a particular table in your Airtable base.
 
-Parameters: `tableName`: `string` *Required*
+Parameters: `tableName`: `string` _Required_
 
 Returns `Model` object
 
 ```js
-const events = db.model('Events');
+const events = db.model("Events");
 ```
 
 ## Query data using the `Model` object
@@ -81,12 +79,12 @@ const allEvents = await events.all();
 
 Retrieve a single `Event` from your Airtable base.
 
-Parameters: `recordId`: `string` *Required*
+Parameters: `recordId`: `string` _Required_
 
 Returns `AirtableRecord`
 
 ```js
-const event = await events.find('recXXXXXXXXXXXXXX');
+const event = await events.find("recXXXXXXXXXXXXXX");
 
 /*
 {
@@ -95,7 +93,60 @@ const event = await events.find('recXXXXXXXXXXXXXX');
   fields: { name: 'Birthday Party', id: 'recXXXXXXXXXXXX' }
 }
 */
+```
 
+### `.where(params)` (in progress)
+
+Retrieve a collection of `Event`s that match criteria defined in params.
+
+The keys of the parameter object are the names of the column in your Airtable base.
+
+Parameters: `params`: `Record<string, string | string[]>` _Required_
+
+Returns `AirtableRecord[]`
+
+```js
+const graduationParties = await events.where({ name: "Graduation Party" });
+
+/*
+[
+  {
+    id: 'recgJYM1juGmJfX3g',
+    createdTime: '2022-04-29T20:05:09.000Z',
+    fields: { Name: 'Graduation Party', id: 'recgJYM1juGmJfX3g' }
+  },
+  {
+    id: 'reczoSVcf1htzZymV',
+    createdTime: '2022-04-29T20:05:09.000Z',
+    fields: { Name: 'Graduation Party', id: 'reczoSVcf1htzZymV' }
+  }
+]
+*/
+```
+
+You can pass an array of `id`s to the `where` function to select multiple records by their `id`. This
+is especially helpful when working with relationships between tables, as the Airtable API returns these columns
+as an...array of `id`s.
+
+```js
+const event = await events.find('recXXXXXXXXXX'); // { ...Dogs: ['recXXXXXXXX', 'recYYYYYYYY'] ... }
+const dogs = db.model('Dogs');
+const partyDogs = await dogs.where({ id: event.fields.Dogs });
+
+/*
+[
+  {
+    id: 'recXXXXXXXXXX',
+    createdTime: '2022-04-29T20:05:09.000Z',
+    fields: { Name: 'Doggo' }
+  },
+  {
+    id: 'recYYYYYYYYYY',
+    createdTime: '2022-04-29T20:05:09.000Z',
+    fields: { Name: 'Grapes' }
+  }
+  {
+]
 ```
 
 ### `.tableName()`
@@ -105,7 +156,7 @@ Parameters: none
 Returns `string`
 
 ```js
-const tableName = events.tableName()
+const tableName = events.tableName();
 
 // "Events"
 ```
@@ -117,7 +168,7 @@ Parameters: none
 Returns `string`
 
 ```js
-const tableUrl = events.tableUrl()
+const tableUrl = events.tableUrl();
 
 // "https://api.airtable.com/v0/appXXXXXXXXXX/Events"
 ```

@@ -1,7 +1,7 @@
 import { airtablerRequest } from "../src/airtablerRequest";
 import { baseUrl } from "../src/baseUrl";
 
-import { AirtablerConfig } from "../src/types.d";
+import { AirtablerConfig } from "../types.d";
 
 const config: AirtablerConfig = {
   apiKey: process.env.DEV_AIRTABLE_API_KEY!,
