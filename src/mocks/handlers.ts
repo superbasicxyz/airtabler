@@ -52,6 +52,12 @@ export const handlers = [
       );
     }
 
+    if (req.url.searchParams.get("filterByFormula") == 'SEARCH("Retirement", {Name})') {
+      return res(
+        ctx.json({ records: responses.events.whereName[0].records })
+      );
+    }
+
     if (req.url.searchParams.get("offset")) {
       return res(
         ctx.status(200),

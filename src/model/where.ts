@@ -6,7 +6,6 @@ import { AirtablerConfig } from "../../types.d";
 export function where(tableUrl: URL, config: AirtablerConfig): Function {
   return async (params: Record<string, string | string[]>): Promise<any> => {
     try {
-      console.log(params);
       const airtableRequestParams = generateFilterByFormula(params);
       const records = await getRecords(tableUrl, config, airtableRequestParams);
       return records;

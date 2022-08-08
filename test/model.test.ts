@@ -93,5 +93,12 @@ describe("model()", () => {
         events.where({ id: ["recEeoflM87HKIsOf", "rec0yEne3iWggETaA"] })
       ).resolves.toStrictEqual(responses.events.whereIdSingle[0].records);
     });
+
+    test('.where({ Name: "Retirement"} returns an array with correct records', async () => {
+      const events = model("Events");
+      await expect(
+        events.where({ Name: "Retirement" })
+      ).resolves.toStrictEqual(responses.events.whereName[0].records);
+    });
   });
 });

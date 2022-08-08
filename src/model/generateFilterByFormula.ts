@@ -13,5 +13,14 @@ export function generateFilterByFormula(
     formula += `SEARCH(RECORD_ID(), "${params.id.join(",")}")`;
   }
 
+  const fields = Object.keys(params);
+
+  fields.forEach(field => {
+    if (field == "id") {
+      return;
+    }
+    formula += `SEARCH("${params[field]}", {${field}})`;
+  });
+
   return { filterByFormula: formula };
 }
