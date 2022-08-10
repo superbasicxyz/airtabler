@@ -96,9 +96,27 @@ describe("model()", () => {
 
     test('.where({ Name: "Retirement"} returns an array with correct records', async () => {
       const events = model("Events");
-      await expect(
-        events.where({ Name: "Retirement" })
-      ).resolves.toStrictEqual(responses.events.whereName[0].records);
+      await expect(events.where({ Name: "Retirement" })).resolves.toStrictEqual(
+        responses.events.whereName[0].records
+      );
+    });
+  });
+
+  describe(".destroy", () => {
+    test('.destroy("recXXXXXX") returns deleted records', async () => {
+      const events = model("Events");
+
+      await expect(events.destroy("recEeoflM87HKIsOf")).resolves.toStrictEqual(
+        responses.events.deleteSingle[0]
+      );
+    });
+
+    test('.destroy(["recXXXXXX", "recYYYY"]) returns deleted records', async () => {
+      const events = model("Events");
+
+      await expect(events.destroy(["recJScKqCWaHpgyT6", "recgJYM1juGmJfX3g"])).resolves.toStrictEqual(
+        responses.events.deleteMultiple[0]
+      );
     });
   });
 });

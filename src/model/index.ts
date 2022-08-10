@@ -2,6 +2,7 @@ import { baseUrl } from "../baseUrl";
 import { all } from "./all";
 import { find } from "./find";
 import { where } from "./where";
+import { destroy } from "./destroy";
 
 import { AirtablerConfig, Model } from "../../types.d";
 
@@ -14,7 +15,8 @@ export function model(config: AirtablerConfig): Function {
       tableUrl: () => tableUrl,
       all: all(tableUrl, config),
       find: find(tableUrl, config),
-      where: where(tableUrl, config)
+      where: where(tableUrl, config),
+      destroy: destroy(tableUrl, config)
     };
   };
 }
