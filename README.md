@@ -57,19 +57,19 @@ const allEvents = await events.all();
 /*
 [
   {
-    id: 'recXXXXXXXXXXXXX',
-    createdTime: '2022-07-19T22:41:33.000Z',
-    fields: { name: 'Birthday Party', id: 'recXXXXXXXXXXXXXX' }
+    id: "recXXXXXXXXXXXXX",
+    createdTime: "2022-07-19T22:41:33.000Z",
+    fields: { name: "Birthday Party", id: "recXXXXXXXXXXXXXX" }
   },
   {
-    id: 'recXXXXXXXXXXXXX',
-    createdTime: '2022-07-19T22:41:33.000Z',
-    fields: { name: 'Graduation Party', id: 'recXXXXXXXXXXXXXXX' }
+    id: "recXXXXXXXXXXXXX",
+    createdTime: "2022-07-19T22:41:33.000Z",
+    fields: { name: "Graduation Party", id: "recXXXXXXXXXXXXXXX" }
   },
   {
-    id: 'recXXXXXXXXXXXXX',
-    createdTime: '2022-07-19T22:41:33.000Z',
-    fields: { name: 'Wedding Reception', id: 'recXXXXXXXXXXXXXX' }
+    id: "recXXXXXXXXXXXXX",
+    createdTime: "2022-07-19T22:41:33.000Z",
+    fields: { name: "Wedding Reception", id: "recXXXXXXXXXXXXXX" }
   }
 ]
 */
@@ -88,9 +88,9 @@ const event = await events.find("recXXXXXXXXXXXXXX");
 
 /*
 {
-  id: 'recXXXXXXXXXXXXX',
-  createdTime: '2022-07-19T22:41:38.000Z',
-  fields: { name: 'Birthday Party', id: 'recXXXXXXXXXXXX' }
+  id: "recXXXXXXXXXXXXX",
+  createdTime: "2022-07-19T22:41:38.000Z",
+  fields: { name: "Birthday Party", id: "recXXXXXXXXXXXX" }
 }
 */
 ```
@@ -111,14 +111,14 @@ const graduationParties = await events.where({ name: "Graduation Party" });
 /*
 [
   {
-    id: 'recgJYM1juGmJfX3g',
-    createdTime: '2022-04-29T20:05:09.000Z',
-    fields: { Name: 'Graduation Party', id: 'recgJYM1juGmJfX3g' }
+    id: "recgJYM1juGmJfX3g",
+    createdTime: "2022-04-29T20:05:09.000Z",
+    fields: { Name: "Graduation Party", id: "recgJYM1juGmJfX3g" }
   },
   {
-    id: 'reczoSVcf1htzZymV',
-    createdTime: '2022-04-29T20:05:09.000Z',
-    fields: { Name: 'Graduation Party', id: 'reczoSVcf1htzZymV' }
+    id: "reczoSVcf1htzZymV",
+    createdTime: "2022-04-29T20:05:09.000Z",
+    fields: { Name: "Graduation Party", id: "reczoSVcf1htzZymV" }
   }
 ]
 */
@@ -129,23 +129,46 @@ is especially helpful when working with relationships between tables, as the Air
 as an...array of `id`s.
 
 ```js
-const event = await events.find('recXXXXXXXXXX'); // { ...Dogs: ['recXXXXXXXX', 'recYYYYYYYY'] ... }
-const dogs = db.model('Dogs');
+const event = await events.find("recXXXXXXXXXX"); // { ...Dogs: ["recXXXXXXXX", "recYYYYYYYY"] ... }
+const dogs = db.model("Dogs");
 const partyDogs = await dogs.where({ id: event.fields.Dogs });
 
 /*
 [
   {
-    id: 'recXXXXXXXXXX',
-    createdTime: '2022-04-29T20:05:09.000Z',
-    fields: { Name: 'Doggo' }
+    id: "recXXXXXXXXXX",
+    createdTime: "2022-04-29T20:05:09.000Z",
+    fields: { Name: "Doggo" }
   },
   {
-    id: 'recYYYYYYYYYY',
-    createdTime: '2022-04-29T20:05:09.000Z',
-    fields: { Name: 'Grapes' }
+    id: "recYYYYYYYYYY",
+    createdTime: "2022-04-29T20:05:09.000Z",
+    fields: { Name: "Grapes" }
   }
   {
+]
+```
+
+### `.destroy(recordId)` or `.destroy([recordIds])`
+
+Delete single record by it"s `id` or up to 10 records by passing an array of `id`s. The 10 records limit is a restriction of the Airtable API.
+
+Parameters: `recordIds`: `string | string[]` _Required_
+
+Returns `AirtableRecord[]` (kind of)
+
+```js
+events.destroy("recYYYYYYYYY");
+
+# OR
+
+events.destroy(["recYYYYYYYYYYYY", "recZZZZZZZZZZZ"]);
+
+
+/*
+[
+  { id: "recYYYYYYYYYY", deleted: true },
+  { id: "recZZZZZZZZZZ", deleted: true }
 ]
 ```
 

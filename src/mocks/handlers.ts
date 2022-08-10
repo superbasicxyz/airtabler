@@ -52,10 +52,11 @@ export const handlers = [
       );
     }
 
-    if (req.url.searchParams.get("filterByFormula") == 'SEARCH("Retirement", {Name})') {
-      return res(
-        ctx.json({ records: responses.events.whereName[0].records })
-      );
+    if (
+      req.url.searchParams.get("filterByFormula") ==
+      'SEARCH("Retirement", {Name})'
+    ) {
+      return res(ctx.json({ records: responses.events.whereName[0].records }));
     }
 
     if (req.url.searchParams.get("offset")) {
@@ -99,6 +100,24 @@ export const handlers = [
   rest.get(`${BASE_URL}/Events/*`, (req, res, ctx) => {
     if (!isAuthorized(req)) {
       return res(ctx.status(401), ctx.json(unauthorizedResponse));
+    }
+
+    return res(ctx.status(404), ctx.json({ error: "NOT_FOUND" }));
+  }),
+  rest.delete(`${BASE_URL}/Events`, (req, res, ctx) => {
+    if (!isAuthorized(req)) {
+      return res(ctx.status(401), ctx.json(unauthorizedResponse));
+    }
+
+    if (req.url.searchParams.getAll("records[]")[0] == "recEeoflM87HKIsOf") {
+      return res(ctx.status(200), ctx.json(responses.events.deleteSingle[0]));
+    }
+
+    if (
+      req.url.searchParams.getAll("records[]").join() ==
+      "recJScKqCWaHpgyT6,recgJYM1juGmJfX3g"
+    ) {
+      return res(ctx.status(200), ctx.json(responses.events.deleteMultiple[0]));
     }
 
     return res(ctx.status(404), ctx.json({ error: "NOT_FOUND" }));

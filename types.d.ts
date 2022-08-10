@@ -36,4 +36,5 @@ export interface Model {
   all: Function;
   find: Function;
   where: Function;
+  destroy: Function;
 }

@@ -1,5 +1,26 @@
 {
   "events": {
+    "deleteSingle": [
+      {
+        "records": [{ "deleted": true, "id": "recEeoflM87HKIsOf" }]
+      }
+    ],
+    "deleteMultiple": [
+      {
+        "records": [
+          { "deleted": true, "id": "recJScKqCWaHpgyT6" },
+          { "deleted": true, "id": "recgJYM1juGmJfX3g" }
+        ]
+      }
+    ],
+    "deleteNotFound": [
+      {
+        "error": {
+          "type": "NOT_FOUND",
+          "message": "Could not find a record with ID \"recEeoflM87HKIsOf\"."
+        }
+      }
+    ],
     "whereName": [
       {
         "records": [
