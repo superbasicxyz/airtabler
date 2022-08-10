@@ -151,7 +151,7 @@ const partyDogs = await dogs.where({ id: event.fields.Dogs });
 
 ### `.destroy(recordId)` or `.destroy([recordIds])`
 
-Delete single record by it"s `id` or up to 10 records by passing an array of `id`s. The 10 records limit is a restriction of the Airtable API.
+Delete single record by its `id` or up to 10 records by passing an array of `id`s. The 10 records limit is a restriction of the Airtable API.
 
 Parameters: `recordIds`: `string | string[]` _Required_
 
