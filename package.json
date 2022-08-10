@@ -1,6 +1,6 @@
 {
   "name": "@superbasicxyz/airtabler",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Open source Airtable API client",
   "author": "James Pierce <james@superbasic.xyz> (https://superbasic.xyz)",
   "repository": {
