@@ -122,26 +122,21 @@ export const handlers = [
 
     return res(ctx.status(404), ctx.json({ error: "NOT_FOUND" }));
   }),
-  rest.post(`${BASE_URL}/*`, (req, res, ctx) => {
+  rest.post(`${BASE_URL}/Events`, (req, res, ctx) => {
     if (!isAuthorized(req)) {
       return res(ctx.status(401), ctx.json(unauthorizedResponse));
     }
 
-    return res(
-      ctx.status(201),
-      ctx.json({
-        records: [
-          {
-            id: "rec9HHwhi5F8Fy997",
-            createdTime: "2022-01-03T21:12:51.000Z",
-            fields: {
-              notes: "this is a note",
-              email: "test@airtable.com",
-              events: ["rec4hh123543jJkkl"]
-            }
-          }
-        ]
-      })
-    );
+    const body: any = req.body;
+    const { records } = body;
+
+    if (records.length > 1) {
+      return res(ctx.status(201), ctx.json(responses.events.createMultiple[0]));
+    }
+
+    return res(ctx.status(201), ctx.json(responses.events.createSingle[0]));
+  }),
+  rest.all("*", (req, res, ctx) => {
+    console.log("unhandled request", req, res, ctx);
   })
 ];

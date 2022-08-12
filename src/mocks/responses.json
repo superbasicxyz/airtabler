@@ -1,5 +1,32 @@
 {
   "events": {
+    "createSingle": [
+      {
+        "records": [
+          {
+            "id": "recTL8PMslGhailYi",
+            "createdTime": "2022-08-11T19:39:02.000Z",
+            "fields": { "Name": "Solstice Party", "id": "recTL8PMslGhailYi" }
+          }
+        ]
+      }
+    ],
+    "createMultiple": [
+      {
+        "records": [
+          {
+            "id": "rec4RbJaKBBg18XpH",
+            "createdTime": "2022-08-11T19:39:02.000Z",
+            "fields": { "Name": "Just a fun Party", "id": "rec4RbJaKBBg18XpH" }
+          },
+          {
+            "id": "recTL8PMslGhailYi",
+            "createdTime": "2022-08-11T19:39:02.000Z",
+            "fields": { "Name": "Solstice Party", "id": "recTL8PMslGhailYi" }
+          }
+        ]
+      }
+    ],
     "deleteSingle": [
       {
         "records": [{ "deleted": true, "id": "recEeoflM87HKIsOf" }]

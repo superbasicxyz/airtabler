@@ -17,8 +17,8 @@ export type AirtableError = {
 };
 
 export type AirtableRecord = {
-  id: string;
-  createdTime: string;
+  id?: string;
+  createdTime?: string;
   fields: AirtableRecordFields;
 };
 
@@ -37,4 +37,5 @@ export interface Model {
   find: Function;
   where: Function;
   destroy: Function;
+  create: Function;
 }

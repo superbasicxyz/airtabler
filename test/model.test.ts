@@ -11,14 +11,6 @@ const config = {
 
 const { model } = airtabler.init(config);
 
-describe("all()", () => {
-  it("returns a function", () => {});
-});
-
-describe("find()", () => {
-  it("returns a function", () => {});
-});
-
 describe("model()", () => {
   describe(".tableName()", () => {
     it("returns the table name", () => {
@@ -114,9 +106,28 @@ describe("model()", () => {
     test('.destroy(["recXXXXXX", "recYYYY"]) returns deleted records', async () => {
       const events = model("Events");
 
-      await expect(events.destroy(["recJScKqCWaHpgyT6", "recgJYM1juGmJfX3g"])).resolves.toStrictEqual(
-        responses.events.deleteMultiple[0]
-      );
+      await expect(
+        events.destroy(["recJScKqCWaHpgyT6", "recgJYM1juGmJfX3g"])
+      ).resolves.toStrictEqual(responses.events.deleteMultiple[0]);
+    });
+  });
+
+  describe(".create", () => {
+    test("create({fields}) creates a record", async () => {
+      const events = model("Events");
+
+      await expect(
+        events.create(responses.events.createSingle[0].records[0].fields)
+      ).resolves.toStrictEqual(responses.events.createSingle[0]);
+    });
+    test("create([{fields}]) creates a record", async () => {
+      const events = model("Events");
+
+      await expect(
+        events.create(
+          responses.events.createMultiple[0].records.map((r: any) => r.fields)
+        )
+      ).resolves.toStrictEqual(responses.events.createMultiple[0]);
     });
   });
 });
