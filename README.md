@@ -1,6 +1,11 @@
 # Airtabler
 
+[![npm version](https://img.shields.io/npm/v/@superbasicxyz/airtabler)](https://www.npmjs.org/package/@superbasicxyz/airtabler)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/@superbasicxyz/airtabler)
+
 Airtable API client written in Typescript. Airtabler's aim is to simplify the implementation of common patterns when using Airtable as a backend for an application.
+
+Consider versus [airtable.js](https://github.com/airtable/airtable.js/).
 
 ## Getting started
 
