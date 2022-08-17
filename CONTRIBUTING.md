@@ -51,6 +51,6 @@ npm i -g typedoc
 And generate docs
 
 ```sh
-npx typedoc --out docs src
+npx typedoc --entryPointStrategy expand ./src
 ```
 
