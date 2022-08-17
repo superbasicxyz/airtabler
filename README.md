@@ -5,6 +5,8 @@
 
 Airtable API client written in Typescript. Airtabler's aim is to simplify the implementation of common patterns when using Airtable as a backend for an application.
 
+[Read the docs](https://superbasicxyz.github.io/airtabler/).
+
 Consider versus [airtable.js](https://github.com/airtable/airtable.js/).
 
 ## Getting started
