@@ -156,6 +156,120 @@ const partyDogs = await dogs.where({ id: event.fields.Dogs });
 ]
 ```
 
+### `.create({ fields })` or `.create([ fields ])`
+
+Create single record by passing an object with keys that match the column names in your base or up to 10 records by passing an array of the same objects
+
+Parameters: `params`: `AirtableRecordFields | AirtableRecordFields[]`
+
+Returns `AirtableRecord[]`
+
+```js
+const newEvent = await events.create({ Name: "Ultimate Cake Party" });
+
+/*
+{
+  records: [
+    {
+      id: 'recYYYYYYYYYYY',
+      createdTime: '2022-07-19T22:39:55.000Z',
+      fields: {
+        Name: 'Ultimate Cake Party',
+        ...
+      }
+    }
+  ]
+}
+*/
+```
+
+```js
+const newEvents = await events.create([
+  { Name: "Dogville Thanksgiving" },
+  { Name: "Catland Cloud Retreat" }
+]);
+
+/*
+{
+  records: [
+    {
+      id: 'recXXXXXXXXXX',
+      createdTime: '2022-07-19T22:39:55.000Z',
+      fields: {
+        Name: 'Dogville Thanksgiving',
+        ...
+      }
+    },
+    {
+      id: 'recYYYYYYYYYYY',
+      createdTime: '2022-07-19T22:39:55.000Z',
+      fields: {
+        Name: 'Catland Cloud Retreat',
+        ...
+      }
+    }
+  ]
+}
+*/
+```
+
+### `.update({ id, fields })` or `.create([ id, fields ])`
+
+Update single record by passing an object with id and keys that match the column names in your base or up to 10 records by passing an array of the same objects.
+
+Parameters: `params`: `AirtableRecord | AirtableRecord[]`
+
+Returns `AirtableRecord[]`
+
+```js
+const updatedEvent = await events.update({ id: 'recYYYYYYYY', Name: "Ultimate Cake Party" });
+
+/*
+{
+  records: [
+    {
+      id: 'recYYYYYYYYYYY',
+      createdTime: '2022-07-19T22:39:55.000Z',
+      fields: {
+        Name: 'Ultimate Cake Party',
+        ...
+      }
+    }
+  ]
+}
+*/
+```
+
+```js
+const updatedEvents = await events.update([
+  { id: 'recXXXXXXXXXX', Name: "Dogville Thanksgiving" },
+  { id: 'recYYYYYYYYYY', Name: "Catland Cloud Retreat" }
+]);
+
+/*
+{
+  records: [
+    {
+      id: 'recXXXXXXXXXX',
+      createdTime: '2022-07-19T22:39:55.000Z',
+      fields: {
+        Name: 'Dogville Thanksgiving',
+        ...
+      }
+    },
+    {
+      id: 'recYYYYYYYYYYY',
+      createdTime: '2022-07-19T22:39:55.000Z',
+      fields: {
+        Name: 'Catland Cloud Retreat',
+        ...
+      }
+    }
+  ]
+}
+*/
+```
+
 ### `.destroy(recordId)` or `.destroy([recordIds])`
 
 Delete single record by its `id` or up to 10 records by passing an array of `id`s. The 10 records limit is a restriction of the Airtable API.
