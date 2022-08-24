@@ -18,7 +18,7 @@ function airtablerRequest(url, { apiKey }, options) {
             Authorization: `Bearer ${apiKey}`
         }
     };
-    if (method == "post" && data) {
+    if ((method == "post" || method == "patch") && data) {
         requestConfig.headers["Content-Type"] = "application/json";
         requestConfig.data = data;
     }

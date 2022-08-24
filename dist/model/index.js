@@ -7,6 +7,7 @@ const find_1 = require("./find");
 const where_1 = require("./where");
 const destroy_1 = require("./destroy");
 const create_1 = require("./create");
+const update_1 = require("./update");
 function model(config) {
     return (tableName) => {
         const tableUrl = new URL(`${(0, baseUrl_1.baseUrl)(config.baseId)}/${tableName}`);
@@ -17,7 +18,8 @@ function model(config) {
             find: (0, find_1.find)(tableUrl, config),
             where: (0, where_1.where)(tableUrl, config),
             destroy: (0, destroy_1.destroy)(tableUrl, config),
-            create: (0, create_1.create)(tableUrl, config)
+            create: (0, create_1.create)(tableUrl, config),
+            update: (0, update_1.update)(tableUrl, config)
         };
     };
 }
