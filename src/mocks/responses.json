@@ -6,6 +6,24 @@
           "id": "recXXXXXXXX",
           "createdTime": "2022-07-19T22:39:27.000Z",
           "fields": {
+            "Name": "Updated Event"
+          }
+        }
+      ]
+    },
+    "updateMultiple": {
+      "records": [
+        {
+          "id": "recXXXXXXXX",
+          "createdTime": "2022-07-19T22:39:27.000Z",
+          "fields": {
+            "Name": "Birthday Party"
+          }
+        },
+        {
+          "id": "recYYYYYYYY",
+          "createdTime": "2022-07-19T22:39:27.000Z",
+          "fields": {
             "Name": "Birthday Party"
           }
         }

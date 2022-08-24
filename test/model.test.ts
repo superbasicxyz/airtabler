@@ -136,8 +136,18 @@ describe("model()", () => {
       const events = model("Events");
 
       await expect(
-        events.update({ id: "recXXXXXXXX", fields: { name: "Updated Event" } })
+        events.update({ id: "recXXXXXXXX", fields: { Name: "Updated Event" } })
       ).resolves.toStrictEqual(responses.events.update);
+    });
+    test(".update([{id, fields}]) updates records", async () => {
+      const events = model("Events");
+
+      await expect(
+        events.update([
+          { id: "recXXXXXXXX", fields: { Name: "Updated Event" } },
+          { id: "recYYYYYYYY", fields: { Name: "Updated Event 2" } }
+        ])
+      ).resolves.toStrictEqual(responses.events.updateMultiple);
     });
   });
 });

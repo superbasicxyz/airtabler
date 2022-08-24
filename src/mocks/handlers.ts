@@ -145,7 +145,7 @@ export const handlers = [
     const { records } = body;
 
     if (records.length > 1) {
-      return res(ctx.status(201), ctx.json(responses.events.createMultiple[0]));
+      return res(ctx.status(201), ctx.json(responses.events.updateMultiple));
     }
 
     return res(ctx.status(201), ctx.json(responses.events.update));
