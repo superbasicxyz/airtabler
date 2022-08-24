@@ -136,6 +136,20 @@ export const handlers = [
 
     return res(ctx.status(201), ctx.json(responses.events.createSingle[0]));
   }),
+  rest.patch(`${BASE_URL}/Events`, (req, res, ctx) => {
+    if (!isAuthorized(req)) {
+      return res(ctx.status(401), ctx.json(unauthorizedResponse));
+    }
+
+    const body: any = req.body;
+    const { records } = body;
+
+    if (records.length > 1) {
+      return res(ctx.status(201), ctx.json(responses.events.createMultiple[0]));
+    }
+
+    return res(ctx.status(201), ctx.json(responses.events.update));
+  }),
   rest.all("*", (req, res, ctx) => {
     console.log("unhandled request", req, res, ctx);
   })

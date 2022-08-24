@@ -38,4 +38,5 @@ export interface Model {
   where: Function;
   destroy: Function;
   create: Function;
+  update: Function;
 }

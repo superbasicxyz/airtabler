@@ -130,4 +130,14 @@ describe("model()", () => {
       ).resolves.toStrictEqual(responses.events.createMultiple[0]);
     });
   });
+
+  describe(".update", () => {
+    test(".update({id, fields}) updates record", async () => {
+      const events = model("Events");
+
+      await expect(
+        events.update({ id: "recXXXXXXXX", fields: { name: "Updated Event" } })
+      ).resolves.toStrictEqual(responses.events.update);
+    });
+  });
 });

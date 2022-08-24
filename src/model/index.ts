@@ -4,6 +4,7 @@ import { find } from "./find";
 import { where } from "./where";
 import { destroy } from "./destroy";
 import { create } from "./create";
+import { update } from "./update";
 
 import { AirtablerConfig, Model } from "../../types.d";
 
@@ -18,7 +19,8 @@ export function model(config: AirtablerConfig): Function {
       find: find(tableUrl, config),
       where: where(tableUrl, config),
       destroy: destroy(tableUrl, config),
-      create: create(tableUrl, config)
+      create: create(tableUrl, config),
+      update: update(tableUrl, config)
     };
   };
 }

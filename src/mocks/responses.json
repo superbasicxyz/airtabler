@@ -1,5 +1,16 @@
 {
   "events": {
+    "update": {
+      "records": [
+        {
+          "id": "recXXXXXXXX",
+          "createdTime": "2022-07-19T22:39:27.000Z",
+          "fields": {
+            "Name": "Birthday Party"
+          }
+        }
+      ]
+    },
     "createSingle": [
       {
         "records": [
