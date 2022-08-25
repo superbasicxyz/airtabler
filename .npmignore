@@ -11,3 +11,4 @@ dist/jest.setup.js
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 .github
+.tool-versions
