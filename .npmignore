@@ -5,6 +5,7 @@ tsconfig.json
 test/
 src/
 dist/mocks/
+docs/
 dist/jest.setup.js
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
