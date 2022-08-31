@@ -1,10 +1,6 @@
 import { airtablerRequest } from "../airtablerRequest";
 
-import {
-  AirtablerConfig,
-  AirtableError,
-  AirtableRecord
-} from "../../types.d";
+import { AirtablerConfig, AirtableError, AirtableRecord } from "../../types.d";
 
 export function update(tableUrl: URL, config: AirtablerConfig): Function {
   return async (
@@ -21,7 +17,7 @@ export function update(tableUrl: URL, config: AirtablerConfig): Function {
         : [{ id: params.id, fields: params.fields }];
 
       const response = await airtablerRequest(`${tableUrl}`, config, {
-        method: 'patch',
+        method: "patch",
         data: { records: recordsToUpdate }
       });
 
