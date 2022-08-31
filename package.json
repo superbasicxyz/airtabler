@@ -9,6 +9,7 @@
   },
   "main": "dist/index.js",
   "scripts": {
+    "release": "np",
     "build": "tsc",
     "test": "jest",
     "test:watch": "jest --watchAll"
@@ -20,6 +21,7 @@
     "jest": "^27.5.1",
     "jest-watch-typeahead": "^1.0.0",
     "msw": "^0.44.2",
+    "np": "^7.6.2",
     "prettier": "^2.6.0",
     "ts-jest": "^27.1.3",
     "typescript": "^4.6.2"

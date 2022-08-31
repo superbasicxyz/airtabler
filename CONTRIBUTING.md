@@ -54,3 +54,10 @@ And generate docs
 npx typedoc --entryPointStrategy expand ./src
 ```
 
+## Publish
+
+```sh
+npm run release
+```
+
+
