@@ -22,8 +22,6 @@
   "exclude": [
     "./node_modules",
     "./dist",
-    "./test",
-    "./src/mocks",
-    "./src/jest.setup.ts"
+    "./test"
   ]
 }
