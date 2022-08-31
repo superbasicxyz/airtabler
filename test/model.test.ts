@@ -2,7 +2,7 @@ import { airtabler } from "../src/index";
 
 import { baseUrl } from "../src/baseUrl";
 
-const responses = require("../src/mocks/responses.json");
+const responses = require("./mocks/responses.json");
 
 const config = {
   baseId: process.env.DEV_AIRTABLE_BASE_ID!,
