@@ -61,19 +61,10 @@ function airtablerPostRequest(
   });
 }
 
-function airtablerPatchRequest(
-  requestConfig: AxiosRequestConfig,
-  data: any
-): Promise<AxiosResponse> {
-  return axios({
-    ...requestConfig,
-    headers: { ...requestConfig.headers, "Content-Type": "application/json" },
-    data
-  });
-}
+// the functions below take the same arguments and handle the request the same way
+// we'll put them in as aliases for now. if we need to break them out with their own
+// logic we can easily do so later
 
-function airtablerDeleteRequest(
-  requestConfig: AxiosRequestConfig
-): Promise<AxiosResponse> {
-  return axios(requestConfig);
-}
+const airtablerPatchRequest = airtablerPostRequest;
+
+const airtablerDeleteRequest = airtablerGetRequest;
