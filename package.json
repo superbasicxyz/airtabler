@@ -11,9 +11,9 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsc",
+    "prepublishOnly": "npm test && npm run build",
     "test": "jest",
-    "test:watch": "jest --watchAll",
-    "prepublishOnly": "npm test && npm run build"
+    "test:watch": "jest --watchAll"
   },
   "license": "ISC",
   "devDependencies": {

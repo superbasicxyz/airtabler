@@ -13,11 +13,7 @@ export function create(tableUrl: URL, config: AirtablerConfig): Function {
   ): Promise<AirtableRecord[] | AirtableError> => {
     try {
       const recordsToCreate = Array.isArray(params)
-        ? params.map(p => {
-            return {
-              fields: p
-            };
-          })
+        ? params.map(p => ({ fields: p }))
         : [{ fields: params }];
 
       const response = await airtablerRequest(`${tableUrl}`, config, {

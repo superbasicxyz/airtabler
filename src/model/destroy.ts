@@ -7,14 +7,12 @@ export function destroy(tableUrl: URL, config: AirtablerConfig): Function {
     recordIds: string | string[]
   ): Promise<AirtableRecord | AirtableError> => {
     try {
-      if (typeof recordIds == "string") {
-        tableUrl.searchParams.append("records[]", recordIds);
-      }
-
       if (Array.isArray(recordIds)) {
         recordIds.map(recordId => {
           tableUrl.searchParams.append("records[]", recordId);
         });
+      } else {
+        tableUrl.searchParams.append("records[]", recordIds);
       }
 
       const response = await airtablerRequest(`${tableUrl}`, config, {

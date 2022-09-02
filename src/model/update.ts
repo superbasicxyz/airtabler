@@ -7,14 +7,7 @@ export function update(tableUrl: URL, config: AirtablerConfig): Function {
     params: AirtableRecord | AirtableRecord[]
   ): Promise<AirtableRecord[] | AirtableError> => {
     try {
-      const recordsToUpdate = Array.isArray(params)
-        ? params.map(p => {
-            return {
-              id: p.id,
-              fields: p.fields
-            };
-          })
-        : [{ id: params.id, fields: params.fields }];
+      const recordsToUpdate = Array.isArray(params) ? params : [params];
 
       const response = await airtablerRequest(`${tableUrl}`, config, {
         method: "patch",

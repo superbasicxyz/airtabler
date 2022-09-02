@@ -154,6 +154,7 @@ const partyDogs = await dogs.where({ id: event.fields.Dogs });
   }
   {
 ]
+*/
 ```
 
 ### `.create({ fields })` or `.create([ fields ])`
@@ -222,7 +223,10 @@ Parameters: `params`: `AirtableRecord | AirtableRecord[]`
 Returns `AirtableRecord[]`
 
 ```js
-const updatedEvent = await events.update({ id: 'recYYYYYYYY', Name: "Ultimate Cake Party" });
+const updatedEvent = await events.update({
+  id: "recYYYYYYYY",
+  fields: { Name: "Ultimate Cake Party" }
+});
 
 /*
 {
@@ -242,8 +246,8 @@ const updatedEvent = await events.update({ id: 'recYYYYYYYY', Name: "Ultimate Ca
 
 ```js
 const updatedEvents = await events.update([
-  { id: 'recXXXXXXXXXX', Name: "Dogville Thanksgiving" },
-  { id: 'recYYYYYYYYYY', Name: "Catland Cloud Retreat" }
+  { id: "recXXXXXXXXXX", fields: { Name: "Dogville Thanksgiving" } },
+  { id: "recYYYYYYYYYY", fields: { Name: "Catland Cloud Retreat" } }
 ]);
 
 /*
@@ -291,6 +295,7 @@ events.destroy(["recYYYYYYYYYYYY", "recZZZZZZZZZZZ"]);
   { id: "recYYYYYYYYYY", deleted: true },
   { id: "recZZZZZZZZZZ", deleted: true }
 ]
+*/
 ```
 
 ### `.tableName()`
