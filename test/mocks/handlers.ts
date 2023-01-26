@@ -3,6 +3,8 @@ import { rest, RestRequest } from "msw";
 const responses = require("./responses.json");
 
 const BASE_URL = `https://api.airtable.com/v0/${process.env.DEV_AIRTABLE_BASE_ID}`;
+const BASE_BASE_URL = `https://api.airtable.com/`;
+
 
 const EVENT = {
   id: "rec9HHwhi5F8Fy997",
@@ -29,6 +31,21 @@ const isAuthorized = (req: RestRequest): boolean => {
 };
 
 export const handlers = [
+  rest.get(`${BASE_BASE_URL}v0/meta/bases`, (req, res, ctx) => {
+    if (!isAuthorized(req)) {
+      return res(ctx.status(401), ctx.json(unauthorizedResponse));
+    }
+
+    return res(
+      ctx.json({ 
+        bases: [{
+          id: "appPknPmgGEJmXAuy",
+          name: "Untitled Base",
+          permissionLevel: "read"
+        }] 
+      })
+    );
+  }),
   rest.get(`${BASE_URL}/Events`, (req, res, ctx) => {
     if (!isAuthorized(req)) {
       return res(ctx.status(401), ctx.json(unauthorizedResponse));

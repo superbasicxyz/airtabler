@@ -4,6 +4,12 @@ export interface AirtablerConfig {
   oauthAccessToken?: string;
 }
 
+export type AirtableBase = {
+  id: string;
+  name: string;
+  permissionLevel: string; // TODO this is an enum, pull from Airtable?
+}
+
 export type AirtableRecordFields = {
   [key: string]: string | string[];
 };

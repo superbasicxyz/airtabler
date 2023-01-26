@@ -9,6 +9,7 @@ describe("init", () => {
   it("returns the object", () => {
     const init = airtabler.init(config);
     expect(init).toHaveProperty('model');
+    expect(init).toHaveProperty('schema');
   });
 });
 
