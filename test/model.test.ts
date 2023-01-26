@@ -1,12 +1,13 @@
 import { airtabler } from "../src/index";
 
 import { baseUrl } from "../src/baseUrl";
+import { AirtablerConfig } from "../types";
 
 const responses = require("./mocks/responses.json");
 
-const config = {
+const config: AirtablerConfig = {
   baseId: process.env.DEV_AIRTABLE_BASE_ID!,
-  apiKey: process.env.DEV_AIRTABLE_API_KEY!
+  personalAccessToken: process.env.DEV_AIRTABLE_TOKEN!
 };
 
 const { model } = airtabler.init(config);

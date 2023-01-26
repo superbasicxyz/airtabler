@@ -12,14 +12,14 @@ const defaultOptions: AirtablerRequestOptions = {
 
 export function airtablerRequest(
   url: string,
-  { apiKey }: AirtablerConfig,
+  { personalAccessToken }: AirtablerConfig,
   { method, data }: AirtablerRequestOptions = defaultOptions
 ): Promise<AxiosResponse> {
   const requestConfig: AxiosRequestConfig = {
     method,
     url,
     headers: {
-      Authorization: `Bearer ${apiKey}`
+      Authorization: `Bearer ${personalAccessToken}`
     }
   };
 

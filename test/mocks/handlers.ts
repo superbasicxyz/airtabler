@@ -24,7 +24,7 @@ const unauthorizedResponse = {
 const isAuthorized = (req: RestRequest): boolean => {
   return (
     req.headers.get("Authorization") ==
-    `Bearer ${process.env.DEV_AIRTABLE_API_KEY}`
+    `Bearer ${process.env.DEV_AIRTABLE_TOKEN}`
   );
 };
 

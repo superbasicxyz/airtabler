@@ -1,6 +1,7 @@
 export interface AirtablerConfig {
   baseId: string;
-  apiKey: string;
+  personalAccessToken?: string;
+  oauthAccessToken?: string;
 }
 
 export type AirtableRecordFields = {
