@@ -7,7 +7,7 @@ export interface AirtablerConfig {
 export type AirtableBase = {
   id: string;
   name: string;
-  permissionLevel: string; // TODO this is an enum, pull from Airtable?
+  permissionLevel: 'none' | 'read' | 'comment' | 'edit' | 'create';
 }
 
 export type AirtableRecordFields = {

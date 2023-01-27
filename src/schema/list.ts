@@ -9,5 +9,5 @@ export function list(config: AirtablerConfig) {
         } catch (error: any) {
            console.log(error); 
         }
-    }   
+    }
 }
